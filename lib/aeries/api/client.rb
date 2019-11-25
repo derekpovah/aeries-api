@@ -1,7 +1,10 @@
+require 'aeries/api/client/schools'
+
 module Aeries
   module Api
     class Client
       include HTTParty
+      include Aeries::Api::Client::Schools
 
       base_uri ENV['AERIES_BASE_URI']
       format :json
