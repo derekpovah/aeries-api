@@ -1,0 +1,26 @@
+module Aeries
+  module Api
+    class Client
+
+      module Students
+
+        def student(school_code = '', student_id: '')
+          response = self.class.get("/schools/#{school_code}/students/#{student_id}")
+          response.parsed_response
+        end
+
+        def students(school_code = '', grade: nil)
+          if grade
+            endpoint = "/schools/#{school_code}/students/grade/#{grade}"
+          else
+            endpoint = "/schools/#{school_code}/students"
+          end
+          response = self.class.get(endpoint)
+          response.parsed_response
+        end
+
+      end
+
+    end
+  end
+end
