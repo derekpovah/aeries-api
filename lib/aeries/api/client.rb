@@ -1,3 +1,4 @@
+require 'aeries/api/client/contacts'
 require 'aeries/api/client/schools'
 require 'aeries/api/client/students'
 
@@ -5,6 +6,7 @@ module Aeries
   module Api
     class Client
       include HTTParty
+      include Aeries::Api::Client::Contacts
       include Aeries::Api::Client::Schools
       include Aeries::Api::Client::Students
 
