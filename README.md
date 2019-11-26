@@ -1,10 +1,12 @@
-# Aeries::Api
+aeries-api
+==========
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/aeries/api`. To experiment with that code, run `bin/console` for an interactive prompt.
+This gem provides an interface to the [Aeries SIS API](https://support.aeries.com/support/solutions/articles/14000077926-aeries-api-full-documentation).
 
-TODO: Delete this and the text above, and describe your gem
+I will implement endpoints as I need them, but will also consider pull requests that add support for additional endpoints. At the time of writing, this gem is designed to be used with version 3 of the Aeries API.
 
-## Installation
+Installation
+------------
 
 Add this line to your application's Gemfile:
 
@@ -12,28 +14,63 @@ Add this line to your application's Gemfile:
 gem 'aeries-api'
 ```
 
-And then execute:
+Usage
+-----
 
-    $ bundle
+#### Setup
 
-Or install it yourself as:
+Initialize the client:
 
-    $ gem install aeries-api
+```ruby
+aeries = Aeries::Api::Client.new(
+  aeries_cert: '477abe9e7d27439681d62f4e0de1f5e1',
+  base_uri: ' https://demo.aeries.net/aeries/api/v3'
+)
+```
 
-## Usage
+The client can also be configured via the environment:
 
-TODO: Write usage instructions here
+```ruby
+ENV['AERIES_CERT'] = '477abe9e7d27439681d62f4e0de1f5e1'
+ENV['AERIES_BASE_URI'] = ' https://demo.aeries.net/aeries/api/v3'
 
-## Development
+aeries = Aeries::Api::Client.new
+```
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+#### Retrieving Data
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+Most endpoints will require a school code to be passed as the first argument. Keyword arguments are then used to pass additional data to the API. Example:
 
-## Contributing
+```ruby
+aeries.students(99, grade_level: 4)
+```
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/aeries-api.
+Available Methods:
 
-## License
+```ruby
+# /api/v3/schools
+schools # returns all schools
+
+# /api/v3/schools/#{school_code}
+school(school_code) # returns a single school
+
+# /api/v3/schools/#{school_code}/StudentGroups
+student_groups(school_code) # returns all student groups at a school
+
+# /api/v3/schools/#{school_code}/students
+students(school_code) # returns all students at a school
+
+# /api/v3/schools/#{school_code}/students/grade/#{grade_level}
+students(school_code, grade_level: grade_level) # returns students in a specific grade level
+
+# /api/v3/schools/#{school_code}/students/#{student_id}
+student(school_code, student_id: student_id) # returns a single student
+
+# /api/schools/#{school_code}/contacts/#{student_id}
+contacts(school_code, student_id: student_id) # returns contacts for a student
+```
+
+License
+-------
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
