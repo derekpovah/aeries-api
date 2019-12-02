@@ -4,12 +4,12 @@ module Aeries
 
       module Students
 
-        def student(school_code = '', student_id: '')
+        def student(school_code:, student_id:)
           response = self.class.get("/schools/#{school_code}/students/#{student_id}")
           mash_and_underscore_keys(response.parsed_response)
         end
 
-        def students(school_code = '', grade: nil)
+        def students(school_code:, grade: nil)
           if grade
             endpoint = "/schools/#{school_code}/students/grade/#{grade}"
           else

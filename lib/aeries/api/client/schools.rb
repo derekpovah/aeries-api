@@ -4,7 +4,7 @@ module Aeries
 
       module Schools
 
-        def school(school_code = '')
+        def school(school_code:)
           response = self.class.get("/schools/#{school_code}")
           mash_and_underscore_keys(response.parsed_response)
         end

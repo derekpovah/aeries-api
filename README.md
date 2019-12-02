@@ -42,7 +42,7 @@ aeries = Aeries::Api::Client.new
 Most endpoints will require a school code to be passed as the first argument. Keyword arguments are then used to pass additional data to the API. Example:
 
 ```ruby
-aeries.students(99, grade_level: 4)
+aeries.students(school_code: 99, grade_level: 4)
 ```
 
 Available Methods:
@@ -52,22 +52,22 @@ Available Methods:
 schools # returns all schools
 
 # /api/v3/schools/#{school_code}
-school(school_code) # returns a single school
+school(school_code: school_code) # returns a single school
 
 # /api/v3/schools/#{school_code}/StudentGroups
-student_groups(school_code) # returns all student groups at a school
+student_groups(school_code: school_code) # returns all student groups at a school
 
 # /api/v3/schools/#{school_code}/students
-students(school_code) # returns all students at a school
+students(school_code: school_code) # returns all students at a school
 
 # /api/v3/schools/#{school_code}/students/grade/#{grade_level}
-students(school_code, grade_level: grade_level) # returns students in a specific grade level
+students(school_code: school_code, grade_level: grade_level) # returns students in a specific grade level
 
 # /api/v3/schools/#{school_code}/students/#{student_id}
-student(school_code, student_id: student_id) # returns a single student
+student(school_code: school_code, student_id: student_id) # returns a single student
 
 # /api/schools/#{school_code}/contacts/#{student_id}
-contacts(school_code, student_id: student_id) # returns contacts for a student
+contacts(school_code: school_code, student_id: student_id) # returns contacts for a student
 ```
 
 License
