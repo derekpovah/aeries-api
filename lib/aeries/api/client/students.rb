@@ -6,7 +6,7 @@ module Aeries
 
         def student(school_code = '', student_id: '')
           response = self.class.get("/schools/#{school_code}/students/#{student_id}")
-          response.parsed_response
+          mash_and_underscore_keys(response.parsed_response)
         end
 
         def students(school_code = '', grade: nil)
@@ -16,7 +16,7 @@ module Aeries
             endpoint = "/schools/#{school_code}/students"
           end
           response = self.class.get(endpoint)
-          response.parsed_response
+          mash_and_underscore_keys(response.parsed_response)
         end
 
       end

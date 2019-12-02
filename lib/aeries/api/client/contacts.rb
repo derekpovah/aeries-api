@@ -6,7 +6,7 @@ module Aeries
 
         def contacts(school_code = '', student_id: nil)
           response = self.class.get("/schools/#{school_code}/contacts/#{student_id}")
-          response.parsed_response
+          mash_and_underscore_keys(response.parsed_response)
         end
 
       end
