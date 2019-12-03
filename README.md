@@ -68,6 +68,12 @@ student(school_code: school_code, student_id: student_id) # returns a single stu
 
 # /api/schools/#{school_code}/contacts/#{student_id}
 contacts(school_code: school_code, student_id: student_id) # returns contacts for a student
+
+# /api/schools/#{school_code}/StudentPictures
+student_picture(school_code: school_code) # returns all student pictures at a school
+
+# /api/schools/#{school_code}/StudentPictures/#{student_id}
+student_pictures(school_code: school_code, student_id: student_id) # returns a single student's picture
 ```
 
 License
