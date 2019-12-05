@@ -1,11 +1,11 @@
 
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'aeries/api/version'
+require 'aeries-api/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'aeries-api'
-  spec.version       = Aeries::Api::VERSION
+  spec.version       = AeriesApi::VERSION
   spec.authors       = ['Derek Povah']
   spec.email         = ['derek@derekpovah.com']
 

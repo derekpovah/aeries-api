@@ -1,5 +1,5 @@
 require 'bundler/setup'
-require 'aeries/api'
+require 'aeries-api'
 require 'webmock/rspec'
 
 require 'support/fake_aeries'

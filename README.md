@@ -22,7 +22,7 @@ Usage
 Initialize the client:
 
 ```ruby
-aeries = Aeries::Api::Client.new(
+aeries = AeriesApi::Client.new(
   aeries_cert: '477abe9e7d27439681d62f4e0de1f5e1',
   base_uri: ' https://demo.aeries.net/aeries/api/v3'
 )
@@ -34,7 +34,7 @@ The client can also be configured via the environment:
 ENV['AERIES_CERT'] = '477abe9e7d27439681d62f4e0de1f5e1'
 ENV['AERIES_BASE_URI'] = ' https://demo.aeries.net/aeries/api/v3'
 
-aeries = Aeries::Api::Client.new
+aeries = AeriesApi::Client.new
 ```
 
 #### Retrieving Data

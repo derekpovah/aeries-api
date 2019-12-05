@@ -1,5 +1,5 @@
-RSpec.describe Aeries::Api::Client do
-  let(:client) { Aeries::Api::Client.new(aeries_cert: 'aeries_cert', base_uri: 'demo.aeries.net/api/v3') }
+RSpec.describe AeriesApi::Client do
+  let(:client) { AeriesApi::Client.new(aeries_cert: 'aeries_cert', base_uri: 'demo.aeries.net/api/v3') }
 
   it 'returns an array of Hashie::Mash objects' do
     response = client.students(school_code: 990)

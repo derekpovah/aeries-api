@@ -1,5 +1,5 @@
-RSpec.describe Aeries::Api::Client::Contacts do
-  let(:client) { Aeries::Api::Client.new(aeries_cert: 'aeries_cert', base_uri: 'https://demo.aeries.net/api/v3') }
+RSpec.describe AeriesApi::Client::Contacts do
+  let(:client) { AeriesApi::Client.new(aeries_cert: 'aeries_cert', base_uri: 'https://demo.aeries.net/api/v3') }
 
   it 'fetches contacts' do
     response = client.contacts(school_code: 990, student_id: 99000001)
