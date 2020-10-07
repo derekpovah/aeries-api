@@ -74,6 +74,9 @@ student_picture(school_code: school_code) # returns all student pictures at a sc
 
 # /api/v5/schools/#{school_code}/StudentPictures/#{student_id}
 student_pictures(school_code: school_code, student_id: student_id) # returns a single student's picture
+
+# /api/v5/schools/#{school_code}/students/#{student_id}/programs
+student_programs(school_code: school_code, student_id: student_id) # returns a single student's picture
 ```
 
 License

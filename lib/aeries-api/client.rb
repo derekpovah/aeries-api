@@ -7,6 +7,7 @@ require 'aeries-api/client/schools'
 require 'aeries-api/client/students'
 require 'aeries-api/client/student_groups'
 require 'aeries-api/client/student_pictures'
+require 'aeries-api/client/student_programs'
 
 module AeriesApi
   class Client
@@ -16,6 +17,7 @@ module AeriesApi
     include AeriesApi::Client::Students
     include AeriesApi::Client::StudentGroups
     include AeriesApi::Client::StudentPictures
+    include AeriesApi::Client::StudentPrograms
 
     format :json
 

@@ -42,6 +42,11 @@ class FakeAeries < Sinatra::Base
     json_response(200, 'student_pictures.json')
   end
 
+  # Student Programs Endpoint
+  get '/api/v5/schools/:school_code/students/:student_id/programs' do
+    json_response(200, 'student_programs.json')
+  end
+
   private
 
   def json_response(http_code, file_name)
