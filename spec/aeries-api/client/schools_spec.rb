@@ -1,5 +1,5 @@
 RSpec.describe AeriesApi::Client::Schools do
-  let(:client) { AeriesApi::Client.new(aeries_cert: 'aeries_cert', base_uri: 'https://demo.aeries.net/api/v3') }
+  let(:client) { AeriesApi::Client.new(aeries_cert: 'aeries_cert', base_uri: 'https://demo.aeries.net/api/v5') }
 
   it 'fetches schools' do
     response = client.schools

@@ -24,7 +24,7 @@ Initialize the client:
 ```ruby
 aeries = AeriesApi::Client.new(
   aeries_cert: '477abe9e7d27439681d62f4e0de1f5e1',
-  base_uri: ' https://demo.aeries.net/aeries/api/v3'
+  base_uri: ' https://demo.aeries.net/aeries/api/v5'
 )
 ```
 
@@ -32,7 +32,7 @@ The client can also be configured via the environment:
 
 ```ruby
 ENV['AERIES_CERT'] = '477abe9e7d27439681d62f4e0de1f5e1'
-ENV['AERIES_BASE_URI'] = ' https://demo.aeries.net/aeries/api/v3'
+ENV['AERIES_BASE_URI'] = ' https://demo.aeries.net/aeries/api/v5'
 
 aeries = AeriesApi::Client.new
 ```
@@ -48,31 +48,31 @@ aeries.students(school_code: 99, grade_level: 4)
 Available Methods:
 
 ```ruby
-# /api/v3/schools
+# /api/v5/schools
 schools # returns all schools
 
-# /api/v3/schools/#{school_code}
+# /api/v5/schools/#{school_code}
 school(school_code: school_code) # returns a single school
 
-# /api/v3/schools/#{school_code}/StudentGroups
+# /api/v5/schools/#{school_code}/StudentGroups
 student_groups(school_code: school_code) # returns all student groups at a school
 
-# /api/v3/schools/#{school_code}/students
+# /api/v5/schools/#{school_code}/students
 students(school_code: school_code) # returns all students at a school
 
-# /api/v3/schools/#{school_code}/students/grade/#{grade_level}
+# /api/v5/schools/#{school_code}/students/grade/#{grade_level}
 students(school_code: school_code, grade_level: grade_level) # returns students in a specific grade level
 
-# /api/v3/schools/#{school_code}/students/#{student_id}
+# /api/v5/schools/#{school_code}/students/#{student_id}
 student(school_code: school_code, student_id: student_id) # returns a single student
 
-# /api/schools/#{school_code}/contacts/#{student_id}
+# /api/v5/schools/#{school_code}/contacts/#{student_id}
 contacts(school_code: school_code, student_id: student_id) # returns contacts for a student
 
-# /api/schools/#{school_code}/StudentPictures
+# /api/v5/schools/#{school_code}/StudentPictures
 student_picture(school_code: school_code) # returns all student pictures at a school
 
-# /api/schools/#{school_code}/StudentPictures/#{student_id}
+# /api/v5/schools/#{school_code}/StudentPictures/#{student_id}
 student_pictures(school_code: school_code, student_id: student_id) # returns a single student's picture
 ```
 
