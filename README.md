@@ -39,7 +39,7 @@ aeries = AeriesApi::Client.new
 
 #### Retrieving Data
 
-Most endpoints will require a school code to be passed as the first argument. Keyword arguments are then used to pass additional data to the API. Example:
+Most endpoints require a school code so it should be passed as an argument. Keyword arguments are then used to pass additional data to the API. Example:
 
 ```ruby
 aeries.students(school_code: 99, grade_level: 4)
