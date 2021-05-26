@@ -47,6 +47,21 @@ class FakeAeries < Sinatra::Base
     json_response(200, 'student_programs.json')
   end
 
+  # Student School Supplemental Endpoint
+  get '/api/v5/schools/:school_code/schoolsupplemental/:student_id' do
+    json_response(200, 'school_supplemental.json')
+  end
+
+  # Student District Supplemental Endpoint
+  get '/api/v5/schools/:school_code/districtsupplemental/:student_id' do
+    json_response(200, 'district_supplemental.json')
+  end
+
+  # Update Student District Supplemental Endpoint
+  post '/api/v5/updateschoolsupplemental/:school_code/:student_number' do
+    json_response(200, 'update_school_supplemental.json')
+  end
+
   private
 
   def json_response(http_code, file_name)
@@ -54,5 +69,4 @@ class FakeAeries < Sinatra::Base
     status http_code
     File.open(File.dirname(__FILE__) + '/fixtures/' + file_name, 'rb').read
   end
-
 end

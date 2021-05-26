@@ -8,6 +8,7 @@ require 'aeries-api/client/students'
 require 'aeries-api/client/student_groups'
 require 'aeries-api/client/student_pictures'
 require 'aeries-api/client/student_programs'
+require 'aeries-api/client/supplemental'
 
 module AeriesApi
   class Client
@@ -18,6 +19,7 @@ module AeriesApi
     include AeriesApi::Client::StudentGroups
     include AeriesApi::Client::StudentPictures
     include AeriesApi::Client::StudentPrograms
+    include AeriesApi::Client::Supplemental
 
     format :json
 
@@ -25,19 +27,23 @@ module AeriesApi
       aeries_cert ||= ENV['AERIES_CERT']
       base_uri ||= ENV['AERIES_BASE_URI']
 
-      self.class.default_options.merge!(headers: { 'AERIES-CERT': aeries_cert }, base_uri: base_uri)
+      self.class.default_options.merge!(headers: { 'AERIES-CERT': aeries_cert, 'Content-Type': 'application/json' }, base_uri: base_uri)
     end
 
     private
 
-    def mash_and_underscore_keys(parsed_response)
-      new_response = []
-      parsed_response.each_with_object(new_response) do |r, a|
-        r.deep_transform_keys! { |k| k.to_s.underscore }
-        a << Hashie::Mash.new(r)
+    def camelize_keys(payload)
+      payload.each do |p|
+        p.deep_transform_keys! { |k| k.to_s.camelize }
       end
-      return new_response
     end
 
+    def mash_and_underscore_keys(parsed_response)
+      return Hashie::Mash.new(parsed_response.deep_transform_keys! { |k| k.underscore }) if parsed_response.is_a?(Hash)
+      parsed_response.each do |k, v|
+        v.is_a?(Array) ? mash_and_underscore_keys(v) : k.deep_transform_keys! { |k| k.underscore }
+      end
+      parsed_response.map! { |r| Hashie::Mash.new(r) }
+    end
   end
 end

@@ -3,6 +3,6 @@ RSpec.describe AeriesApi::Client::StudentPrograms do
 
   it 'fetches student programs' do
     response = client.student_programs(school_code: 994, student_id: 99400001)
-    expect(response.count).to eq(9)
+    expect(response.first.student_id).to eq(99400001)
   end
 end

@@ -1,8 +1,6 @@
 module AeriesApi
   class Client
-
     module StudentPictures
-
       def student_picture(school_code:, student_id:)
         response = self.class.get("/schools/#{school_code}/studentpictures/#{student_id}")
         mash_and_underscore_keys(response.parsed_response)
@@ -12,8 +10,6 @@ module AeriesApi
         response = self.class.get("/schools/#{school_code}/studentpictures")
         mash_and_underscore_keys(response.parsed_response)
       end
-
     end
-
   end
 end
