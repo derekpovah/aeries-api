@@ -3,11 +3,13 @@ module AeriesApi
     module Supplemental
       def school_supplemental(school_code:, student_id:)
         response = self.class.get("/schools/#{school_code}/schoolsupplemental/#{student_id}")
+        @error_handler.handle_error(response)
         mash_and_underscore_keys(response.parsed_response)
       end
 
       def district_supplemental(school_code:, student_id:)
         response = self.class.get("/schools/#{school_code}/districtsupplemental/#{student_id}")
+        @error_handler.handle_error(response)
         mash_and_underscore_keys(response.parsed_response)
       end
 
@@ -17,6 +19,7 @@ module AeriesApi
         }
 
         response = self.class.post("/updateschoolsupplemental/#{school_code}/#{student_number}", options)
+        @error_handler.handle_error(response)
         mash_and_underscore_keys(response.parsed_response)
       end
     end

@@ -9,6 +9,7 @@ require 'aeries-api/client/student_groups'
 require 'aeries-api/client/student_pictures'
 require 'aeries-api/client/student_programs'
 require 'aeries-api/client/supplemental'
+require 'aeries-api/error_handler'
 
 module AeriesApi
   class Client
@@ -24,6 +25,8 @@ module AeriesApi
     format :json
 
     def initialize(aeries_cert: nil, base_uri: nil)
+      @error_handler = AeriesApi::ErrorHandler.new
+
       aeries_cert ||= ENV['AERIES_CERT']
       base_uri ||= ENV['AERIES_BASE_URI']
 

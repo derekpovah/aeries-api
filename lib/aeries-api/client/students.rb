@@ -3,6 +3,7 @@ module AeriesApi
     module Students
       def student(school_code:, student_id:)
         response = self.class.get("/schools/#{school_code}/students/#{student_id}")
+        @error_handler.handle_error(response)
         mash_and_underscore_keys(response.parsed_response)
       end
 
@@ -13,6 +14,7 @@ module AeriesApi
           endpoint = "/schools/#{school_code}/students"
         end
         response = self.class.get(endpoint)
+        @error_handler.handle_error(response)
         mash_and_underscore_keys(response.parsed_response)
       end
     end
