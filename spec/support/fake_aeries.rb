@@ -62,6 +62,15 @@ class FakeAeries < Sinatra::Base
     json_response(200, 'update_school_supplemental.json')
   end
 
+  # Staff Endpoints
+  get '/api/v5/staff' do
+    json_response(200, 'all_staff.json')
+  end
+
+  get '/api/v5/staff/:staff_id' do
+    json_response(200, 'staff.json')
+  end
+
   private
 
   def json_response(http_code, file_name)

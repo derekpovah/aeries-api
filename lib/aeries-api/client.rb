@@ -4,6 +4,7 @@ require 'hashie'
 
 require 'aeries-api/client/contacts'
 require 'aeries-api/client/schools'
+require 'aeries-api/client/staff'
 require 'aeries-api/client/students'
 require 'aeries-api/client/student_groups'
 require 'aeries-api/client/student_pictures'
@@ -16,6 +17,7 @@ module AeriesApi
     include HTTParty
     include AeriesApi::Client::Contacts
     include AeriesApi::Client::Schools
+    include AeriesApi::Client::Staff
     include AeriesApi::Client::Students
     include AeriesApi::Client::StudentGroups
     include AeriesApi::Client::StudentPictures
