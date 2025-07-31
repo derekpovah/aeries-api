@@ -3,7 +3,7 @@ aeries-api
 
 This gem provides an interface to the [Aeries SIS API](https://support.aeries.com/support/solutions/articles/14000077926-aeries-api-full-documentation).
 
-I will implement endpoints as I need them, but will also consider pull requests that add support for additional endpoints. At the time of writing, this gem is designed to be used with version 3 of the Aeries API.
+I will implement endpoints as I need them, but will also consider pull requests that add support for additional endpoints. Currently, this gem is designed to be used with version 5 of the Aeries API.
 
 Installation
 ------------
@@ -53,6 +53,12 @@ schools # returns all schools
 
 # /api/v5/schools/#{school_code}
 school(school_code: school_code) # returns a single school
+
+# /api/v5/staff
+staff # returns all staff
+
+# /api/v5/staff/${staff_id}
+staff(staff_id: staff_id) # returns a single staff record
 
 # /api/v5/schools/#{school_code}/StudentGroups
 student_groups(school_code: school_code) # returns all student groups at a school
